@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="row">
+<Departments />
+
+<!-- <div class="row">
     <div class="col-md-6">
         <h1>Departments</h1>
 
@@ -43,7 +45,9 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
-</div>
+        </div> -->
+<!-- </div> -->
+<!-- </div> -->
+
+
 @endsection
