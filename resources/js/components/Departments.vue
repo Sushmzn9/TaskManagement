@@ -1,3 +1,5 @@
+
+
 <template>
     <div class="row">
         <div class="col-md-12">
@@ -61,6 +63,7 @@
 </template>
 
 <script>
+
 export default {
     data() {
         return {
@@ -74,8 +77,16 @@ export default {
             $("#exampleModal").modal("show");
         },
         storeDepartment() {
-            axios.post()
+            axios.post(window.url + 'api/storeDepartment', this.departmentData)
+                .then((response) => {
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error('Error occurred:', error);
+                });
+
         }
+
     },
     mounted() {
 

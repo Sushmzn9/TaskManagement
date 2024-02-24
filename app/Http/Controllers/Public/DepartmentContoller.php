@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Session;
 
 class DepartmentContoller extends Controller
 {
+    //vue js
+    public function storeDepartment(Request $request)
+    {
+        return $request->all();
+    }
+    //below code is related to laravel curd
     public function departmentIndex()
     {
         $departments = Department::all();
