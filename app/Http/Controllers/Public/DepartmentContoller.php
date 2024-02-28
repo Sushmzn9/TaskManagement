@@ -15,7 +15,7 @@ class DepartmentContoller extends Controller
 
         Department::create([
             'name' => $request->name,
-            'director_id' => $request->director_id,
+
             'user_id' => 1,
         ]);
 
@@ -34,7 +34,7 @@ class DepartmentContoller extends Controller
 
         Department::where('id', $id)->update([
             'name' => $request->name,
-            'director_id' => $request->director_id,
+
             'user_id' => 1,
         ]);
 
@@ -65,12 +65,12 @@ class DepartmentContoller extends Controller
 
         $request->validate([
             'name' => ['required'],
-            'director_id' => ['required'],
+
         ]);
 
         Department::create([
             'name' => $request->name,
-            'director_id' => $request->director_id,
+
             'user_id' => 1,
         ]);
         Session::flash('success', 'Department created successfully');
@@ -86,11 +86,11 @@ class DepartmentContoller extends Controller
     {
         $request->validate([
             'name' => ['required'],
-            'director_id' => ['required'],
+
         ]);
         Department::where('id', $id)->update([
             'name' => $request->name,
-            'director_id' => $request->director_id,
+
         ]);
         Session::flash('success', 'Department updated successfully');
 

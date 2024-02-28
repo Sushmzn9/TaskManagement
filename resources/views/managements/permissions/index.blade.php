@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="card-body">
-</div>
+    </div>
     <div class="col-md-12">
         <div class="table-responsive">
             <table class="table table-hover">
@@ -35,10 +35,10 @@
                         <td>{{$permission->display_name }}</td>
                         <td>{{$permission->description }}</td>
                         <td>
-                            <div class="float-left mx-1"> <a href="{{route('roles.edit',$permission->id)}}" class="btn-success btn">Edit</a>
+                            <div class="float-left mx-1"> <a href="{{route('permission.edit',$permission->id)}}" class="btn-success btn">Edit</a>
                             </div>
                             <div class="float-left mx-1">
-                                <form action="{{route('roles.delete',$permission->id)}}" method="POST">
+                                <form action="{{route('permission.delete',$permission->id)}}" method="POST">
                                     @csrf
                                     @method("Delete")
                                     <button class="btn-danger btn">Delete</button>
@@ -49,9 +49,9 @@
                     @endforeach
                 </tbody>
             </table>
-        </div> 
- </div> 
- </div> 
+        </div>
+    </div>
+</div>
 
 
 @endsection
