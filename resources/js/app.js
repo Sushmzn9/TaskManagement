@@ -1,6 +1,6 @@
 import "./bootstrap";
 
-window.url = "http://taskmanagement.test/";
+window.url = "https://task_management.test/";
 
 import { createApp } from "vue";
 import { store } from "./store/store";

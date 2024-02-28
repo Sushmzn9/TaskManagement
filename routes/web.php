@@ -34,15 +34,16 @@ Route::get('users/index', [UserController::class, 'userIndex'])->name('users.ind
 
 
 
-Route::get('roles/index', [RoleController::class, "rolesIndex"] )->name('roles.index');
-Route::get('roles/create', [RoleController::class, "rolesCreate"] )->name('roles.create');
-Route::post('roles/create', [RoleController::class, "rolesStore"] )->name('roles.store');
-Route::get('roles/edit/{id}', [RoleController::class, "rolesEdit"] )->name('roles.edit');
+Route::get('roles/index', [RoleController::class, "rolesIndex"])->name('roles.index');
+Route::get('roles/create', [RoleController::class, "rolesCreate"])->name('roles.create');
+Route::post('roles/store', [RoleController::class, "rolesStore"])->name('roles.store');
+Route::get('roles/edit/{id}', [RoleController::class, "rolesEdit"])->name('roles.edit');
 Route::post('roles/update/{id}', [RoleController::class, 'rolesUpdate'])->name('roles.update');
 Route::delete('roles/delete/{id}', [RoleController::class, 'rolesdelete'])->name('roles.delete');
 
 
 
 
-Route::get('permission/index',[PermissionController::class, "permissionIndex"] )->name('permission.index');
-Route::get('permission/create',[PermissionController::class, "permissionCreate"] )->name('permission.create');
+Route::get('permission/index', [PermissionController::class, "permissionIndex"])->name('permission.index');
+Route::get('permission/create', [PermissionController::class, "permissionCreate"])->name('permission.create');
+Route::post('permission/store', [PermissionController::class, "permissionStore"])->name('permission.store');

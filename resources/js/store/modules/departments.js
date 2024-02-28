@@ -22,7 +22,7 @@ export default {
                 );
                 context.commit("set_departments", response.data);
             } catch (error) {
-                console.error("Error fetching departments:", error);
+                console.error("Error fetching departments:", error.message);
             }
         },
         storeDepartment: async (context, departmentData) => {

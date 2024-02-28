@@ -22,13 +22,10 @@
                 <ul class="list-unstyled components mb-5">
                     <li class="{{Request::is('departments/index', " users/index", "roles/index" , "permission/index" )
                         ? "active" : "" }}">
-                        <a href="#homeSubmenu" data-bs-toggle="collapse" role="button"
-                            aria-expanded="{{Request::is('departments/index', " users/index", "roles/index"
-                            , "permission/index" ) ? "true " : "false" }}" aria-controls="homeSubmenu">Management <i
-                                class="fa fa-angle-down float-right mt-2"></i></a>
+                        <a href="#homeSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="{{Request::is('departments/index', " users/index", "roles/index"
+                            , "permission/index" ) ? "true " : "false" }}" aria-controls="homeSubmenu">Management <i class="fa fa-angle-down float-right mt-2"></i></a>
                         <ul class=" collapse list-unstyled {{Request::is('departments/index', "
-                            users/index", "roles/index" , "permission/index" ) ? "show " : "" }}" id="homeSubmenu"
-                            id="homeSubmenu">
+                            users/index", "roles/index" , "permission/index" ) ? "show " : "" }}" id="homeSubmenu" id="homeSubmenu">
 
                             <li class="{{Request::is('departments/index')
                             ? " active" : "" }}">
@@ -73,9 +70,7 @@
                         <i class="fa fa-bars"></i>
                         <span class="sr-only">Toggle Menu</span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
 
@@ -85,7 +80,11 @@
                                 <a class="nav-link" href="#">Settings</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Logout</a>
+                                <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
+                                <form id="logout-form" action="{{route('logout')}}" method="POST">
+                                    @csrf
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -107,11 +106,26 @@
         </div>
     </div>
 
-    {{--
-    <script>
-        window.auth_roles = {{!!json_encode(auth()->user()->roles)!!}};
-        window.auth_permissions = {{!!json_encode(auth()->user()->permissions)!!}};
-    </script> --}}
+
+
+    <!-- //         // Check if auth() and auth()->user() exist and have roles and permissions
+        //         if (auth() && auth().user() && auth().user().roles && auth().user().permissions) {
+        //             window.auth_roles = {
+        //                 !!json_encode(auth() - > user() - > roles) !!
+        //             };
+        //             window.auth_permissions = {
+        //                 !!json_encode(auth() - > user() - > permissions) !!
+        //             };
+        //         } else {
+        //             // Handle the case where roles or permissions are not available
+        //             console.error('User roles or permissions are not available.');
+        //             window.auth_roles = [];
+        //             window.auth_permissions = [];
+        //         }
+        //  -->
+
+
+
 
     <script src="{{ asset('/js/app.js') }}"></script>
     <script src="{{ asset('/sidebar/js/main.js') }}"></script>
