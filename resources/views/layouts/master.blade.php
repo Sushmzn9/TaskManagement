@@ -97,6 +97,8 @@
 
     <script src="{{ asset('/js/app.js') }}"></script>
     <script src="{{ asset('/sidebar/js/main.js') }}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 

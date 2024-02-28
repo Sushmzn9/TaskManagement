@@ -12,7 +12,41 @@ class DepartmentContoller extends Controller
     //vue js
     public function storeDepartment(Request $request)
     {
-        return $request->all();
+
+        Department::create([
+            'name' => $request->name,
+            'director_id' => $request->director_id,
+            'user_id' => 1,
+        ]);
+
+        return response()->json('success');
+    }
+    public function getDepartments()
+    {
+
+        $data =  Department::all();
+
+        return json_encode($data);
+    }
+
+    public function updateDepartment(Request $request, $id)
+    {
+
+        Department::where('id', $id)->update([
+            'name' => $request->name,
+            'director_id' => $request->director_id,
+            'user_id' => 1,
+        ]);
+
+        return response()->json('success');
+    }
+
+    public function deleteDepartment($id)
+    {
+        $item = Department::findOrfail($id);
+        $item->delete();
+
+        return response()->json('success');
     }
     //below code is related to laravel curd
     public function departmentIndex()

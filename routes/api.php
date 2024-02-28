@@ -21,3 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/storeDepartment', [DepartmentContoller::class, 'storeDepartment']);
+Route::get('/getDepartments', [DepartmentContoller::class, 'getDepartments']);
+Route::post('/updateDepartment/{id}', [DepartmentContoller::class, 'updateDepartment']);
+Route::post('/deleteDepartment/{id}', [DepartmentContoller::class, 'deleteDepartment']);
+
+
