@@ -10,10 +10,7 @@
                         New Department
                     </div>
                     <div class="card-body">
-                        <button @click="testAction" class="btn btn-success">
-test
-                        </button>
-                        {{ test }}
+
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
@@ -79,7 +76,7 @@ test
                     </thead>
                     <tbody>
 
-                        <tr v-for="(item, index) in Department" :key="index">
+                        <tr v-for="(item, index) in departments" :key="index">
                             <th scope="row">{{ index + 1 }}</th>
                             <td>{{ item.name }}</td>
                             <td>{{ item.director_id }}</td>
@@ -112,14 +109,6 @@ const departmentData = ref({
     director_id: "",
 });
 
-    // try {
-    //     const response = await axios.get(window.url + 'api/getDepartments');
-    //     Department.value = response.data;
-    // } catch (error) {
-    //     console.error('Error fetching departments:', error);
-    // }
-    
-
 
 function createDepartment() {
     $('#exampleModal').modal('show')
@@ -137,54 +126,25 @@ function editDepartment(item) {
 
 }
 
- function storeDepartment() {
-    // try {
-    //     console.log(DepartmentErrors.value);
-    //     const response = await axios.post(window.url + 'api/storeDepartment', departmentData.value);
-    //     getDepartments();
-    //     $('#exampleModal').modal('hide')
-    //     console.log(response);
-
-    // } catch (error) {
-    //     console.error('Error fetching departments:', error);
-    // }
-store.dispatch('storeDepartment', departmentData.value)
-
+function storeDepartment() {
+   store.dispatch('storeDepartment', departmentData.value)
 }
 
 async function updateDepartment() {
-    try {
-        const response = await axios.post(window.url + 'api/updateDepartment/' + departmentData.value.id, departmentData.value);
-        console.log(response);
-        getDepartments();
-        edit.value = false
-        $('#exampleModal').modal('hide')
-
-
-    } catch (error) {
-        console.error('Error fetching departments:', error.message);
-    }
-
+    store.dispatch('updateDepartment', departmentData.value)
+    edit.value = false
+    $('#exampleModal').modal('hide')
 }
 
 async function deleteDepartment(item) {
-    try {
-        const response = await axios.post(window.url + 'api/deleteDepartment/' + item.id);
-        console.log(response);
-        getDepartments();
-
-    } catch (error) {
-        console.error('Error fetching departments:', error.message);
-    }
+    store.dispatch('deleteDepartment', item)
 }
 
-function testAction(){
-    store.dispatch("testAction")
-}
 
-onMounted(() => store.dispatch('getDepartments')
+onMounted(() => 
+
+store.dispatch('getDepartments')
 );
-;
-const test =  computed(() => store.getters.test)
-const departments = computed(()=>store.getters.departments)
+
+const departments = computed(() => store.getters.departments)
 </script>

@@ -20,19 +20,29 @@
             <div class="p-4 pt-5">
                 <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
                 <ul class="list-unstyled components mb-5">
-                    <li class="active">
-                        <a href="#homeSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="homeSubmenu">Management <i class="fa fa-angle-down float-right mt-2"></i></a>
-                        <ul class=" collapse list-unstyled" id="homeSubmenu" id="homeSubmenu">
-                            <li>
+                    <li class="{{Request::is('departments/index', " users/index", "roles/index" , "permission/index" )
+                        ? "active" : "" }}">
+                        <a href="#homeSubmenu" data-bs-toggle="collapse" role="button"
+                            aria-expanded="{{Request::is('departments/index', " users/index", "roles/index"
+                            , "permission/index" ) ? "true " : "false" }}" aria-controls="homeSubmenu">Management <i
+                                class="fa fa-angle-down float-right mt-2"></i></a>
+                        <ul class=" collapse list-unstyled {{Request::is('departments/index', "
+                            users/index", "roles/index" , "permission/index" ) ? "show " : "" }}" id="homeSubmenu"
+                            id="homeSubmenu">
+
+                            <li class="{{Request::is('departments/index')
+                            ? " active" : "" }}">
                                 <a href=" {{route('departments.index')}}">Departments</a>
                             </li>
-                            <li>
+
+
+                            <li class="{{Request::is( " users/index") ? "active" : "" }}">
                                 <a href="{{route('users.index')}}">Users</a>
                             </li>
-                            <li>
+                            <li class="{{Request::is( "roles/index" ) ? "active" : "" }}">
                                 <a href="{{route('roles.index')}}">Roles</a>
                             </li>
-                            <li>
+                            <li class="{{Request::is( " permission/index" ) ? "active" : "" }}">
                                 <a href="{{route('permission.index')}}">Permission</a>
                             </li>
                         </ul>
@@ -63,7 +73,9 @@
                         <i class="fa fa-bars"></i>
                         <span class="sr-only">Toggle Menu</span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
 
@@ -95,9 +107,14 @@
         </div>
     </div>
 
+    {{--
+    <script>
+        window.auth_roles = {{!!json_encode(auth()->user()->roles)!!}};
+        window.auth_permissions = {{!!json_encode(auth()->user()->permissions)!!}};
+    </script> --}}
+
     <script src="{{ asset('/js/app.js') }}"></script>
     <script src="{{ asset('/sidebar/js/main.js') }}"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
