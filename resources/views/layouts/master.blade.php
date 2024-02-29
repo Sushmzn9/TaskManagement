@@ -18,38 +18,47 @@
     <div class="wrapper d-flex align-items-stretch" id="app">
         <nav id="sidebar">
             <div class="p-4 pt-5">
-                <ul class="list-unstyled components mb-5">
-                    <li class="{{Request::is('departments/index', " users/index", "roles/index" , "permission/index" )
-                        ? "active" : "" }}">
-                        <a href="#homeSubmenu" data-bs-toggle="collapse" role="button"
-                            aria-expanded="{{Request::is('departments/index', " users/index", "roles/index"
-                            , "permission/index" ) ? "true " : "false" }}" aria-controls="homeSubmenu">Management <i
-                                class="fa fa-angle-down float-right mt-2"></i></a>
-                        <ul class=" collapse list-unstyled {{Request::is('departments/index', "
-                            users/index", "roles/index" , "permission/index" ) ? "show " : "" }}" id="homeSubmenu"
-                            id="homeSubmenu">
 
+                <ul class="list-unstyled components mb-5">
+                    @can("admin")
+                    <li class="{{Request::is('departments/index', "users/index", "roles/index" , "permission/index", "tasks/index" )
+                        ? "active" : "" }}">
+                        <a href="#homeSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="{{Request::is('departments/index', " users/index", "roles/index"
+                            , "permission/index","tasks/index" ) ? "true " : "false" }}" aria-controls="homeSubmenu">Management <i class="fa fa-angle-down float-right mt-2"></i></a>
+                        <ul class=" collapse list-unstyled {{Request::is('departments/index', "users/index", "roles/index" , "permission/index" ) ? "show " : "" }}" id="homeSubmenu" id="homeSubmenu">
+                            @can('departments-read')
                             <li class="{{Request::is('departments/index')
                             ? " active" : "" }}">
                                 <a href=" {{route('departments.index')}}">Departments</a>
                             </li>
+                            @endcan
 
-
+                            @can('user-read')
                             <li class="{{Request::is( " users/index") ? "active" : "" }}">
                                 <a href="{{route('users.index')}}">Users</a>
                             </li>
+                            @endcan
+                            @can('roles-read')
                             <li class="{{Request::is( " roles/index" ) ? "active" : "" }}">
                                 <a href="{{route('roles.index')}}">Roles</a>
                             </li>
+                            @endcan
+                            @can('permissions-read')
                             <li class="{{Request::is( " permission/index" ) ? "active" : "" }}">
                                 <a href="{{route('permission.index')}}">Permission</a>
                             </li>
+                            @endcan
                         </ul>
                     </li>
-                    <li>
-                        <a href="#">Task Inbox</a>
+                    @endcan
+                    @can('task-read')
+                    <li class="{{Request::is( "tasks/index" ) ? "active" : "" }}">
+                        <a href="{{route('task.index')}}">Assign Tasks</a>
                     </li>
-
+                    @endcan
+                    <li>
+                        <a href="#"> Inbox</a>
+                    </li>
                 </ul>
 
                 <div class="footer">
@@ -82,8 +91,7 @@
                                 <a class="nav-link" href="#">Settings</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('logout')}}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
                                 <form id="logout-form" action="{{route('logout')}}" method="POST">
                                     @csrf
@@ -110,22 +118,24 @@
     </div>
 
 
+    <!--
+    @auth
+    <script>
+        window.token = {
+            !!json_encode(session() - > get('token')) !!
+        };
+        window.auth_roles = {
+            !!json_encode(auth() - > user() - > roles) !!
+        };
+        window.auth_permissions = {
+            !!json_encode(auth() - > user() - > permissions) !!
+        };
+    </script>
 
-    <!-- //         // Check if auth() and auth()->user() exist and have roles and permissions
-        //         if (auth() && auth().user() && auth().user().roles && auth().user().permissions) {
-        //             window.auth_roles = {
-        //                 !!json_encode(auth() - > user() - > roles) !!
-        //             };
-        //             window.auth_permissions = {
-        //                 !!json_encode(auth() - > user() - > permissions) !!
-        //             };
-        //         } else {
-        //             // Handle the case where roles or permissions are not available
-        //             console.error('User roles or permissions are not available.');
-        //             window.auth_roles = [];
-        //             window.auth_permissions = [];
-        //         }
-        //  -->
+
+
+
+    @endauth -->
 
 
 

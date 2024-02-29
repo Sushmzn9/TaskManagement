@@ -5,6 +5,7 @@ use App\Http\Controllers\Public\HomeController;
 use App\Http\Controllers\Public\PermissionController;
 use App\Http\Controllers\Public\RoleController;
 use App\Http\Controllers\Public\UserController;
+use App\Http\Controllers\TaskController;
 use App\Models\Permission;
 use Illuminate\Support\Facades\Route;
 
@@ -50,3 +51,9 @@ Route::post('permission/store', [PermissionController::class, "permissionStore"]
 Route::get('permission/edit/{id}', [PermissionController::class, "permissionEdit"])->name('permission.edit');
 Route::post('permission/update/{id}', [PermissionController::class, "permissionUpdate"])->name('permission.update');
 Route::delete('permission/delete/{id}', [PermissionController::class, 'permissiondelete'])->name('permission.delete');
+
+
+
+Route::controller(TaskController::class,)->group(function () {
+    Route::get('tasks/index', 'taskIndex')->name('task.index')->middleware('permission:task-read');
+});
