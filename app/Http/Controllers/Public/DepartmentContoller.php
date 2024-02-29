@@ -34,7 +34,6 @@ class DepartmentContoller extends Controller
 
         Department::where('id', $id)->update([
             'name' => $request->name,
-
             'user_id' => 1,
         ]);
 
@@ -70,7 +69,6 @@ class DepartmentContoller extends Controller
 
         Department::create([
             'name' => $request->name,
-
             'user_id' => 1,
         ]);
         Session::flash('success', 'Department created successfully');

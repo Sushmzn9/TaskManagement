@@ -119,10 +119,27 @@ async function updateDepartment() {
 }
 
 async function deleteDepartment(item) {
-    store.dispatch("deleteDepartment", item);
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+
+            store.dispatch("deleteDepartment", item);
+
+        }
+    });
 }
 
 onMounted(() => store.dispatch("getDepartments"));
 
 const departments = computed(() => store.getters.departments);
+
 </script>

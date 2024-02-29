@@ -18,14 +18,16 @@
     <div class="wrapper d-flex align-items-stretch" id="app">
         <nav id="sidebar">
             <div class="p-4 pt-5">
-                <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
                 <ul class="list-unstyled components mb-5">
                     <li class="{{Request::is('departments/index', " users/index", "roles/index" , "permission/index" )
                         ? "active" : "" }}">
-                        <a href="#homeSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="{{Request::is('departments/index', " users/index", "roles/index"
-                            , "permission/index" ) ? "true " : "false" }}" aria-controls="homeSubmenu">Management <i class="fa fa-angle-down float-right mt-2"></i></a>
+                        <a href="#homeSubmenu" data-bs-toggle="collapse" role="button"
+                            aria-expanded="{{Request::is('departments/index', " users/index", "roles/index"
+                            , "permission/index" ) ? "true " : "false" }}" aria-controls="homeSubmenu">Management <i
+                                class="fa fa-angle-down float-right mt-2"></i></a>
                         <ul class=" collapse list-unstyled {{Request::is('departments/index', "
-                            users/index", "roles/index" , "permission/index" ) ? "show " : "" }}" id="homeSubmenu" id="homeSubmenu">
+                            users/index", "roles/index" , "permission/index" ) ? "show " : "" }}" id="homeSubmenu"
+                            id="homeSubmenu">
 
                             <li class="{{Request::is('departments/index')
                             ? " active" : "" }}">
@@ -36,7 +38,7 @@
                             <li class="{{Request::is( " users/index") ? "active" : "" }}">
                                 <a href="{{route('users.index')}}">Users</a>
                             </li>
-                            <li class="{{Request::is( "roles/index" ) ? "active" : "" }}">
+                            <li class="{{Request::is( " roles/index" ) ? "active" : "" }}">
                                 <a href="{{route('roles.index')}}">Roles</a>
                             </li>
                             <li class="{{Request::is( " permission/index" ) ? "active" : "" }}">
@@ -70,7 +72,7 @@
                         <i class="fa fa-bars"></i>
                         <span class="sr-only">Toggle Menu</span>
                     </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" id="navbarCollapse">
                         <i class="fa fa-bars"></i>
                     </button>
 
@@ -80,7 +82,8 @@
                                 <a class="nav-link" href="#">Settings</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                <a class="nav-link" href="{{route('logout')}}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
                                 <form id="logout-form" action="{{route('logout')}}" method="POST">
                                     @csrf

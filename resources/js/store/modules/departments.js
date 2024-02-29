@@ -22,7 +22,7 @@ export default {
                 );
                 context.commit("set_departments", response.data);
             } catch (error) {
-                console.error("Error fetching departments:", error.message);
+                console.error("Error fetching departments:", error);
             }
         },
         storeDepartment: async (context, departmentData) => {
@@ -30,8 +30,13 @@ export default {
                 window.url + "api/storeDepartment",
                 departmentData
             );
+            window.Toast.fire({
+                icon: "success",
+                title: "Department Created Successfully"
+              });
             context.dispatch("getDepartments");
             $("#exampleModal").modal("hide");
+        
         },
         updateDepartment: async (context, departmentData) => {
             try {
@@ -39,10 +44,13 @@ export default {
                     window.url + "api/updateDepartment/" + departmentData.id,
                     departmentData
                 );
-                console.log(response);
+                window.Toast.fire({
+                    icon: "success",
+                    title: "Department Updated Successfully"
+                  });
                 context.dispatch("getDepartments");
             } catch (error) {
-                console.error("Error fetching departments:", error.message);
+                console.error("Error fetching departments:", error);
             }
         },
         deleteDepartment: async (context, item) => {
@@ -50,9 +58,13 @@ export default {
                 const response = await axios.post(
                     window.url + "api/deleteDepartment/" + item.id
                 );
+                window.Toast.fire({
+                    icon: "success",
+                    title: "Department Deleted Successfully"
+                  });
                 context.dispatch("getDepartments");
             } catch (error) {
-                console.error("Error fetching departments:", error.message);
+                console.error("Error fetching departments:", error);
             }
         },
     },
