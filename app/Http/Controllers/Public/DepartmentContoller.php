@@ -24,7 +24,7 @@ class DepartmentContoller extends Controller
     public function getDepartments()
     {
 
-        $data =  Department::all();
+        $data = Department::all();
 
         return json_encode($data);
     }
@@ -78,6 +78,7 @@ class DepartmentContoller extends Controller
     public function departmentEdit($id)
     {
         $department = Department::findOrfail($id);
+        ray('mmy first ray call');
         return view('managements.departments.edit', compact('department'));
     }
     public function departmentUpdate(Request $request, $id)

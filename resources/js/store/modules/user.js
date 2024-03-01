@@ -2,12 +2,16 @@ import axios from "axios";
 
 export default {
     state: {
-        users:[]
+        users:[],
+        userLinks:[]
     },
     getters: {
       
         users(state){
             return state.users
+        },
+        userLinks(state){
+            return state.userLinks
         }
     },
     mutations: {
@@ -16,6 +20,9 @@ export default {
         },
         set_users:(state,data) =>{
             state.users = data;
+
+            state.userLinks=data.links
+
         }
     },
     actions: {
@@ -25,7 +32,7 @@ export default {
                     window.url + "api/getUser"
                 
                 );
-                console.log(response.data);
+    
                 context.commit("set_users", response.data);
             } catch (error) {
                 console.error("Error fetching Users:", error);
@@ -46,13 +53,14 @@ export default {
         },
         updateUser: async (context, userData) => {
             try {
+                console.log(userData);
                 const response = await axios.post(
-                    window.url + "api/updateUser/" + userData.id,
-                    userData
+                    window.url + "api/postUser/" + userData.id, userData
                 );
+                console.log(response);
                 context.dispatch("getUser");
             } catch (error) {
-                console.error("Error fetching :", error);
+                console.error("Error fetching :", error.message);
             }
         },
         deleteUser: async (context, item) => {

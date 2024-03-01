@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Department;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
@@ -19,5 +20,8 @@ class ApiController extends Controller
      
      public function getAllPermissions(){
         return response()->json( Permission::all());
+     }
+     public function getAllUsers(){
+        return response()->json( User::with('department')->with('roles')->with('permissions')->get());
      }
 }

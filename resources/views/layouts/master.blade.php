@@ -15,47 +15,49 @@
 
 <body>
 
+    <div id="modals"></div>
+
     <div class="wrapper d-flex align-items-stretch" id="app">
         <nav id="sidebar">
             <div class="p-4 pt-5">
 
                 <ul class="list-unstyled components mb-5">
-                    @can("admin")
+                    {{-- @can("admin") --}}
                     <li class="{{Request::is('departments/index', "users/index", "roles/index" , "permission/index", "tasks/index" )
                         ? "active" : "" }}">
                         <a href="#homeSubmenu" data-bs-toggle="collapse" role="button" aria-expanded="{{Request::is('departments/index', " users/index", "roles/index"
                             , "permission/index","tasks/index" ) ? "true " : "false" }}" aria-controls="homeSubmenu">Management <i class="fa fa-angle-down float-right mt-2"></i></a>
                         <ul class=" collapse list-unstyled {{Request::is('departments/index', "users/index", "roles/index" , "permission/index" ) ? "show " : "" }}" id="homeSubmenu" id="homeSubmenu">
-                            @can('departments-read')
+                            {{-- @can('departments-read') --}}
                             <li class="{{Request::is('departments/index')
                             ? " active" : "" }}">
                                 <a href=" {{route('departments.index')}}">Departments</a>
                             </li>
-                            @endcan
+                            {{-- @endcan --}}
 
-                            @can('user-read')
+                            {{-- @can('user-read') --}}
                             <li class="{{Request::is( " users/index") ? "active" : "" }}">
                                 <a href="{{route('users.index')}}">Users</a>
                             </li>
-                            @endcan
-                            @can('roles-read')
+                            {{-- @endcan --}}
+                            {{-- @can('roles-read') --}}
                             <li class="{{Request::is( " roles/index" ) ? "active" : "" }}">
                                 <a href="{{route('roles.index')}}">Roles</a>
                             </li>
-                            @endcan
-                            @can('permissions-read')
+                            {{-- @endcan
+                            @can('permissions-read') --}}
                             <li class="{{Request::is( " permission/index" ) ? "active" : "" }}">
                                 <a href="{{route('permission.index')}}">Permission</a>
                             </li>
-                            @endcan
+                            {{-- @endcan --}}
                         </ul>
                     </li>
-                    @endcan
-                    @can('task-read')
+                    {{-- @endcan --}}
+                    {{-- @can('task-read') --}}
                     <li class="{{Request::is( "tasks/index" ) ? "active" : "" }}">
                         <a href="{{route('task.index')}}">Assign Tasks</a>
                     </li>
-                    @endcan
+                    {{-- @endcan --}}
                     <li>
                         <a href="#"> Inbox</a>
                     </li>
@@ -65,7 +67,7 @@
 
                     Copyright &copy;
 
-                    All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by
+                    All rights reserved
                 </div>
 
             </div>
@@ -116,7 +118,6 @@
 
         </div>
     </div>
-
 
     <!--
     @auth

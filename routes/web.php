@@ -55,5 +55,5 @@ Route::delete('permission/delete/{id}', [PermissionController::class, 'permissio
 
 
 Route::controller(TaskController::class,)->group(function () {
-    Route::get('tasks/index', 'taskIndex')->name('task.index')->middleware('permission:task-read');
+    Route::get('tasks/index', 'taskIndex')->name('task.index');
 });

@@ -1,7 +1,7 @@
 import './bootstrap'
 
-window.url = 'https://task_management.test/'
-// window.url= "http://taskmanagement.test/"
+// window.url = 'https://task_management.test/'
+window.url= "http://taskmanagement.test/"
 import { createApp } from 'vue'
 import { store } from './store/store'
 import Multiselect from '@vueform/multiselect'

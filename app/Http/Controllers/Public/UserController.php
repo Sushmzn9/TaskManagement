@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function getUser()
     {
-        return response()->json(User::with('department')->with('roles')->with('permissions')->get());
+        return response()->json(User::with('department')->with('roles')->with('permissions')->paginate(1));
     }
 
     public function storeUser(Request $request)
@@ -54,7 +54,7 @@ class UserController extends Controller
         return response()->json('success');
     }
 
-    public function postUser(Request $request, $id)
+    public function updateUser(Request $request, $id)
     {
         $request->validate([
             "name" => ['required'],

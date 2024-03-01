@@ -95,6 +95,11 @@ const departmentData = ref({
 });
 
 function createDepartment() {
+    departmentData.value = {
+        id: "",
+        name: "",
+
+    };
     $("#exampleModal").modal("show");
 }
 
