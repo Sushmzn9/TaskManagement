@@ -222,7 +222,7 @@
         <nav aria-label="...">
                     <ul class="pagination">
                        
-                        <li :class="`page-item ${link.active ? "active" : ' '}`" v-for="(link, index) in links" :key="index"><a class="page-link" href="#" v-html="link.label">1</a></li>
+                        <!-- <li :class="`page-item ${link.active ? "active" : ''}`" v-for="(link, index) in links" :key="index"><a class="page-link" href="#" v-html="link.label">1</a></li> -->
                        
                     </ul>
                 </nav>

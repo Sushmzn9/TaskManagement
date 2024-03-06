@@ -57,3 +57,8 @@ Route::delete('permission/delete/{id}', [PermissionController::class, 'permissio
 Route::controller(TaskController::class,)->group(function () {
     Route::get('tasks/index', 'taskIndex')->name('task.index');
 });
+
+
+Route::get('/catering', function () {
+    return view('catering.index');
+});

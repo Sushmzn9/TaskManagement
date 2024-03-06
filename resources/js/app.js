@@ -10,6 +10,7 @@ import Swal from 'sweetalert2'
 import Departments from './components/Departments.vue'
 import Tasks from './components/tasks/Tasks.vue'
 import PermissionsCreate from './components/permissions/PermissionsCreate.vue'
+import Catering from './components/catering/Catering.vue'
 import Users from './components/users/Users.vue'
 const app = createApp({})
 window.Swal = Swal
@@ -30,6 +31,7 @@ app.component('Departments', Departments)
 app.component('permission-create', PermissionsCreate)
 app.component('users', Users)
 app.component('tasks', Tasks)
+app.component('catering', Catering)
 app.component('multi-select', Multiselect)
 app.use(store)
 app.mount('#app')

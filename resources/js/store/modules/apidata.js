@@ -25,8 +25,9 @@ export default {
         filtered_permission(state) {
             return state.filtered_permission
         },
-        filtered_user(state) {
-            console.log(state.filtered_users)
+
+        filtered_users(state) {
+            console.log(state.filtered_users,"5tgy")
             return state.filtered_users
         },
     },
@@ -60,7 +61,8 @@ export default {
         },
         set_filtered_permission: (state, data) => {
             state.filtered_permission = []
-            data.values.forEach((value) => {
+         
+            data.values.map((value) => {
                 state.all_permissions.find((element) => {
                     if (element.name.includes(value)) {
                         state.filtered_permission.push({
@@ -74,12 +76,15 @@ export default {
         set_all_users: (state, data) => {
             state.filtered_users = []
             data.map((item) =>
-                state.filtered_users.push({
+            state.filtered_users.push({
                     value: item.id,
                     label: item.name,
                 })
             )
+            console.log(state.filtered_users);
         },
+     
+
     },
     actions: {
         getAllDepartments: async (context) => {

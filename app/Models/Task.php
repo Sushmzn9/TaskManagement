@@ -28,4 +28,8 @@ class Task extends Model
     {
         return $this->belongsToMany(User::class);
     }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
 }

@@ -5,7 +5,8 @@ export default {
         Task: {},
     },
     getters: {
-        Task(state) {
+        task(state) {
+            console.log(state.Task);
             return state.Task;
         },
     },
@@ -20,6 +21,7 @@ export default {
                 const response = await axios.get(
                     window.url + "api/getTask"
                 );
+                console.log(response.data);
                 context.commit("set_Task", response.data);
             } catch (error) {
                 console.error("Error fetching Task:", error);

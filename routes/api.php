@@ -42,4 +42,5 @@ Route::post('/deleteUser/{id}',[UserController::class,"deleteUser"]);
 
 Route::controller(TaskController::class)->group(function() {
     Route::post('storeTask', "storeTask");
+    Route::get('getTask', 'getTask');
 });

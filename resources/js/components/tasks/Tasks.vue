@@ -74,9 +74,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="assign_to" class="form-label">Assign To</label>
-                                        <multi-select :options="filteredUsers"
-                                                     v-model="taskData.assign_to
-        " :searchable="true" mode="tags"></multi-select>
+                                        <multi-select :options="filteredUsers" v-model="taskData.assign_to" :searchable="true" mode="tags"></multi-select>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -91,8 +89,47 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                <div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Priority</th>
+                <th>Description</th>
+                <th>Assign To</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(tas, index) in allTask" :key="index">
+                
+                <td>{{ tas.title }}</td>
+                <td>{{ tas.start_date }}</td>
+                <td>{{ tas.end_date }}</td>
+                <td :class="{'table-success' : tas.priority ==='Urgent'}">{{ tas.priority }}</td>
+                <td>{{ tas.description }}</td>
+                <td>{{ tas.department.name}}</td>
+                
+                <td> <button class="btn btn-success" >
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button class="btn btn-danger ml-1">
+                                    <i class="fa fa-trash"></i>
+                                </button></td>
+              
+            </tr>
+        </tbody>
+        </table>
+        </div>
+
             </div>
+                </div>
+           
+            </div>
+        
         </div>
     </div>
 </template>
@@ -105,7 +142,7 @@ import { useStore } from 'vuex'
 const store = useStore()
 const edit = ref(false)
 const taskData = ref({
-  
+
     title: '',
     priority: "",
     start_date: "",
@@ -159,10 +196,13 @@ async function updateTask() {
 //     }
 
 onMounted(() => {
-    store.dispatch('getAllUsers')
+    store.dispatch('getAllUsers'),
+    store.dispatch('getTask');
+    
 },
 )
 
-const filteredUsers = computed(() => store.getters.filtered_user)
-console.log(filteredUsers);
+const filteredUsers = computed(() => {store.getters.filtered_users})
+console.log(filteredUsers.value);
+const allTask = computed(()=>store.getters.task)
 </script>
